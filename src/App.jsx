@@ -14,7 +14,7 @@ const App = () => {
   const [prompt, setPrompt] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const ai = new GoogleGenAI({ apiKey: "AIzaSyAHqbnn8TP-WyQvK4JU_3tKwx04O7CbgY8" });
+  const ai = new GoogleGenAI({ apiKey: "AIzaSyBPq-9KoGmB7Xv0iNkVw-dfH0k2XkuccYs" });
 
   const [data, setData] = useState([]);
 
