@@ -18,25 +18,34 @@ const App = () => {
 
   const [data, setData] = useState([]);
 
-  async function getResponse() {
-    if (prompt.trim() === "") {
-      alert("Please enter a prompt!");
-      return;
-    }
+async function getResponse() {
+  if (prompt.trim() === "") {
+    alert("Please enter a prompt!");
+    return;
+  }
 
-    setData((prev) => [...prev, { role: "user", content: prompt }]);
-    setScreen(2);
-    setLoading(true);
+  const userMessage = prompt;   // store current prompt
+  setPrompt("");                // clear input immediately
 
+  setData(prevData => [...prevData, { role: "user", content: userMessage }]);
+  setScreen(2);
+  setLoading(true);
+
+  try {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
-      contents: prompt,
+      contents: userMessage,
     });
 
-    setData((prev) => [...prev, { role: "ai", content: response.text }]);
-    setPrompt("");
-    setLoading(false);
+    setData(prevData => [...prevData, { role: "ai", content: response.text }]);
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong. Try again.");
   }
+
+  setLoading(false);
+}
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white">
