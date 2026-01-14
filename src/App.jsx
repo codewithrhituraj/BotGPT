@@ -12,7 +12,7 @@ const App = () => {
   const [screen, setScreen] = useState(1);
   const [prompt, setPrompt] = useState("");
   const [loading, setLoading] = useState(false);
-  const ai = new GoogleGenAI({ apiKey: "YOUR_API_KEY" });
+  const ai = new GoogleGenAI({ apiKey: "AIzaSyAHqbnn8TP-WyQvK4JU_3tKwx04O7CbgY8" });
   let messages = [];
 
   const [data, setData] = useState(messages);
